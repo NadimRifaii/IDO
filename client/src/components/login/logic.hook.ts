@@ -1,24 +1,22 @@
 import React, { useState } from "react"
 import { authDataSource } from "../../core/dataSource/remoteDataSource/authDataSource"
 import toast from "react-hot-toast"
+
 const defaultCredentials: {
-  userName: string,
   email: string,
   password: string
 } = {
-  userName: "",
   email: "",
   password: ""
 }
 const useLogic = () => {
   const [credentials, setCredentials] = useState(defaultCredentials)
-  const signup = async () => {
+  const login = async () => {
     const loadingToastId = toast.loading('Signing up...');
-    console.log("Clicked")
     try {
-      await authDataSource.signup({ credentials })
-      setCredentials({ ...defaultCredentials })
+      await authDataSource.login({ credentials })
       toast.success('Signup successful!', { id: loadingToastId });
+      setCredentials({ ...defaultCredentials })
     } catch (error: any) {
       toast.error(`Something went wrong`, { id: loadingToastId });
     }
@@ -26,6 +24,6 @@ const useLogic = () => {
   const changeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
     setCredentials({ ...credentials, [e.target.name]: e.target.value })
   }
-  return { credentials, setCredentials, signup, changeHandler }
+  return { credentials, setCredentials, login, changeHandler }
 }
 export default useLogic 

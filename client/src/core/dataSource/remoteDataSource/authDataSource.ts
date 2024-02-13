@@ -14,12 +14,12 @@ export const authDataSource = {
       throw new Error(error)
     }
   },
-  login: async (data: {}) => {
+  login: async (data: { credentials: {} }) => {
     try {
       const response = await sendRequest({
         route: "Auth/login",
         method: "POST",
-        data
+        data: data.credentials
       })
       localStorage.setItem('token', response.token)
     } catch (error: any) {
