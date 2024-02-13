@@ -3,6 +3,7 @@ import './input.styles.css'
 type InputProps = {
   inputProps: {
     type: string,
+    required?: boolean,
     changeHandler: () => void
   }
   label: string,

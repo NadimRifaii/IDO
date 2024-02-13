@@ -28,6 +28,23 @@
   font-size: 20px;
 }
 
+.auth .switch-form {
+  display: flex;
+  align-items: center;
+  margin-top: 20px;
+  color: white;
+}
+
+.auth .switch-form button {
+  color: white;
+  display: inline;
+  width: fit-content;
+  border-radius: none;
+  background: none;
+  font-size: 16px;
+  text-decoration: underline;
+}
+
 @media (max-width:767px) {
   .auth .welcome p {
     font-size: 32px;
