@@ -1,14 +1,15 @@
 import { sendRequest } from "../../helpers/request";
 
 export const authDataSource = {
-  signup: async (data: {}) => {
+  signup: async (data: { credentials: {} }) => {
+    console.log(data)
     try {
       const response = await sendRequest({
-        route: "api/signup",
+        route: "Auth/signup",
         method: "POST",
-        data
+        data: data.credentials
       })
-      return response
+      localStorage.setItem('token', response.token)
     } catch (error: any) {
       throw new Error(error)
     }
@@ -16,11 +17,11 @@ export const authDataSource = {
   login: async (data: {}) => {
     try {
       const response = await sendRequest({
-        route: "api/login",
+        route: "Auth/login",
         method: "POST",
         data
       })
-      return response
+      localStorage.setItem('token', response.token)
     } catch (error: any) {
       throw new Error(error)
     }

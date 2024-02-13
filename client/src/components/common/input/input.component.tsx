@@ -3,8 +3,10 @@ import './input.styles.css'
 type InputProps = {
   inputProps: {
     type: string,
+    value?: string,
     required?: boolean,
-    changeHandler: () => void
+    name: string,
+    onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void
   }
   label: string,
 }

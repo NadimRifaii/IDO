@@ -5,12 +5,12 @@ type LoginProps = {
 }
 const LogIn = ({ formToggler }: LoginProps) => {
   return (
-    <div className="signup">
+    <div className="login">
       <form action="" onSubmit={(e) => {
         e.preventDefault()
       }}>
-        <Input label="Email" inputProps={{ type: "email", changeHandler: () => { }, required: true }} />
-        <Input label="Password" inputProps={{ type: "password", changeHandler: () => { }, required: true }} />
+        <Input label="Email" inputProps={{ type: "email", onChange: () => { }, name: 'email', required: true }} />
+        <Input label="Password" inputProps={{ type: "password", onChange: () => { }, name: 'email', required: true }} />
         <Button value="Login" handleClick={() => { }} />
       </form>
       < div className="switch-form" >
