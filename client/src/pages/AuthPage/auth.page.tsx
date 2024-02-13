@@ -7,7 +7,11 @@ import './auth.styles.css'
 const AuthPage = () => {
   return (
     <div className="auth">
+      <div className="welcome">
+        <p>Time to Work!</p>
+      </div>
       <SignUp />
+
     </div>
   )
 }
