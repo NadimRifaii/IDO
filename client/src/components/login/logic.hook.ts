@@ -1,7 +1,9 @@
 import React, { useState } from "react"
 import { authDataSource } from "../../core/dataSource/remoteDataSource/authDataSource"
 import toast from "react-hot-toast"
-
+import { useNavigate } from "react-router-dom"
+import { useDispatch } from "react-redux"
+import { setUser } from "../../core/dataSource/localDataSource/userSlice/userSlice"
 const defaultCredentials: {
   email: string,
   password: string
@@ -11,12 +13,16 @@ const defaultCredentials: {
 }
 const useLogic = () => {
   const [credentials, setCredentials] = useState(defaultCredentials)
+  const navigate = useNavigate()
+  const dispatch = useDispatch()
   const login = async () => {
     const loadingToastId = toast.loading('Signing up...');
     try {
-      await authDataSource.login({ credentials })
+      const response=await authDataSource.login({ credentials })
       toast.success('Signup successful!', { id: loadingToastId });
       setCredentials({ ...defaultCredentials })
+      dispatch(setUser(response))
+      navigate('/home')
     } catch (error: any) {
       toast.error(`Something went wrong`, { id: loadingToastId });
     }

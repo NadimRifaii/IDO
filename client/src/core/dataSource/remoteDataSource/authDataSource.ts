@@ -10,6 +10,9 @@ export const authDataSource = {
         data: data.credentials
       })
       localStorage.setItem('token', response.token)
+      const { currentUser: user } = response
+      localStorage.setItem("user", JSON.stringify(user))
+      return user
     } catch (error: any) {
       throw new Error(error)
     }
@@ -22,6 +25,9 @@ export const authDataSource = {
         data: data.credentials
       })
       localStorage.setItem('token', response.token)
+      const { currentUser: user } = response
+      localStorage.setItem("user", JSON.stringify(user))
+      return user
     } catch (error: any) {
       throw new Error(error)
     }

@@ -1,0 +1,32 @@
+.home-page {
+  position: relative;
+}
+
+.home-page .quote {
+  padding: 20px 35px;
+  background: transparent linear-gradient(180deg, #6E4C85 0%, #2D2B52 100%);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.home-page .show-quote {
+  position: absolute;
+  top: 100px;
+  cursor: pointer;
+  right: 40px;
+}
+
+.home-page .quote .x-toggler {
+  font-weight: bold;
+  transition: .3s;
+  opacity: .5;
+  user-select: none;
+  cursor: pointer;
+  font-size: 20px;
+}
+
+.home-page .quote .x-toggler:hover {
+  opacity: 1;
+}
