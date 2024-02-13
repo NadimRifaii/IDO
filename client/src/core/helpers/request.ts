@@ -12,10 +12,12 @@ export const sendRequest = async ({
   data
 }: SendRequestRequirements) => {
   try {
+    const baseURL = import.meta.env.VITE_BASE_URL;
     const response = await axios.request({
       url: route,
       method,
       data,
+      baseURL,
       headers: {
         'Content-Type': 'application/json',
         'Authorization': `Bearer ${localStorage.getItem('token')}`
