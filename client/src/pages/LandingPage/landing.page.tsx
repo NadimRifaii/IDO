@@ -1,3 +1,4 @@
+import AuthPage from '../AuthPage/auth.page'
 import './landing.styles.css'
 const LandingPage = () => {
   return (
@@ -15,7 +16,7 @@ const LandingPage = () => {
           </div>
         </div>
       </div>
-
+      <AuthPage />
     </div>
   )
 }

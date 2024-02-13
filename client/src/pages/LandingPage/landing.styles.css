@@ -1,5 +1,12 @@
-.left {
+.landing-page {
+  display: flex;
+}
+
+.landing-page>div {
   width: 50%;
+}
+
+.left {
   height: 100vh;
   display: flex;
   flex-direction: column;
