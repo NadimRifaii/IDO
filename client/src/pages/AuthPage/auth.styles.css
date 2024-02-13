@@ -16,6 +16,18 @@
   color: white;
 }
 
+.auth button {
+  background: #B6A3C2 0% 0% no-repeat padding-box;
+  border: none;
+  outline: none;
+  border-radius: 15px;
+  width: 100%;
+  padding: 5px;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 20px;
+}
+
 @media (max-width:767px) {
   .auth .welcome p {
     font-size: 32px;
