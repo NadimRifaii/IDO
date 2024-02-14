@@ -11,12 +11,15 @@ export const userSlice = createSlice({
   name: "user",
   reducers: {
     setUser(prevState, { type, payload }: { type: string, payload: User }) {
+      if (prevState && type) {
+
+      }
       return {
         ...payload
       }
     },
     removeUser(prevState, { type, payload }: { type: string, payload: User }) {
-      if (type) {
+      if (type && prevState && payload) {
 
       }
       return {
