@@ -19,6 +19,7 @@ const useLogic = () => {
       getUserTasks()
     }
   }, [])
+
   const getUserTasks = async () => {
     const loadingToastId = toast.loading('Fetching user tasks...');
     try {
@@ -43,10 +44,14 @@ const useLogic = () => {
     try {
       const response: { tasks: Task[] } = await taskDataSource.createTask({ defaultTaskObject })
       dispatch(setTasks({ tasks: [...response.tasks], todoTasks: [response.tasks[0], ...todoTasks || []] }))
-      getUserTasks()
     } catch (error: any) {
     }
   }
+  useEffect(() => {
+    setFilteredToDoTasks(todoTasks || []);
+    setFilteredDoingTasks(doingTasks || []);
+    setFilteredDoneTasks(doneTasks || []);
+  }, [tasks])
   const formatDateString = (date: Date) => {
     let year = date.getUTCFullYear();
     let month = String(date.getUTCMonth() + 1).padStart(2, '0');
@@ -58,6 +63,23 @@ const useLogic = () => {
     let formattedDate = `${year}-${month}-${day}T${hours}:${minutes}:${seconds}.${milliseconds}Z`;
     return formattedDate;
   }
-  return { user, tasks, todoTasks, doneTasks, doingTasks, createTask }
+
+  const searchTasks = (query: string) => {
+    const regex = new RegExp(query, "i")
+    const todo: Task[] = todoTasks?.filter(task => {
+      return regex.test(task.title)
+    }) || []
+    const doing: Task[] = doingTasks?.filter(task => {
+      return regex.test(task.title)
+    }) || []
+    const done: Task[] = doneTasks?.filter(task => {
+      return regex.test(task.title)
+    }) || []
+    setFilteredToDoTasks(todo);
+    setFilteredDoingTasks(doing);
+    setFilteredDoneTasks(done);
+  }
+
+  return { user, tasks, filteredTodoTasks, filteredDoingTasks, filteredDoneTasks, createTask, searchTasks }
 }
 export default useLogic 

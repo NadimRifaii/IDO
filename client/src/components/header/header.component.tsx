@@ -1,12 +1,13 @@
 type HeaderProps = {
-  createTask: () => void
+  createTask: () => void,
+  searchTasks: (query: string) => void
 }
 //css files 
 import { useState } from 'react'
 import './header.styles.css'
 import Logout from '../logout/logout.component'
 import Input from '../common/input/input.component'
-const Header = ({ createTask }: HeaderProps) => {
+const Header = ({ createTask, searchTasks }: HeaderProps) => {
   const [activeLogout, setActiveLogout] = useState(false)
   return (
     <div className="header">
@@ -16,7 +17,7 @@ const Header = ({ createTask }: HeaderProps) => {
       <div className="nav">
         <div className="search">
           <img src='./Search.svg' />
-          <Input inputProps={{ type: 'text', name: 'search', placeholder: "What are you looking for?" }} />
+          <Input inputProps={{ type: 'text', name: 'search', onChange: (e) => searchTasks(e.target.value), placeholder: "What are you looking for?" }} />
         </div>
         <div className="add-icon" onClick={createTask}>
           <img src='./Circle.svg' />

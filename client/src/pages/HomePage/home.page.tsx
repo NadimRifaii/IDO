@@ -9,12 +9,12 @@ import ToDOIcon from "../../assets/todo-icon.component"
 import DoingIcon from "../../assets/doing-icon.component"
 import DoneIcon from "../../assets/done-icon.component"
 const HomePage = () => {
-  const { todoTasks, doingTasks, doneTasks, createTask } = useLogic()
+  const { filteredTodoTasks: todoTasks, filteredDoingTasks: doingTasks, filteredDoneTasks: doneTasks, createTask, searchTasks } = useLogic()
   const [activeQuote, setActiveQuote] = useState(true)
 
   return (
     <div className="home-page">
-      <Header createTask={createTask} />
+      <Header searchTasks={searchTasks} createTask={createTask} />
       {
         activeQuote ?
           <div className="quote">
