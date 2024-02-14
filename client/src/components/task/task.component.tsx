@@ -1,7 +1,7 @@
 import { ConnectDragSource, useDrag } from "react-dnd"
 import { Task } from "../../core/types/task"
 import Select from "react-select"
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { taskDataSource } from "../../core/dataSource/remoteDataSource/taskDataSource"
 
 
@@ -15,7 +15,7 @@ type TaskProps = {
   drag?: ConnectDragSource
 }
 const TaskComponent = ({ task }: TaskProps) => {
-  const { credentials, changeHandler, updateTask, dispatch, setTasks } = useLogic(task)
+  const { credentials, changeHandler, updateTask, dispatch, setTasks, setCredentials } = useLogic(task)
   const [{ isDragging }, drag] = useDrag(() => ({
     type: 'task',
     item: { taskId: task.taskId },
@@ -63,7 +63,9 @@ const TaskComponent = ({ task }: TaskProps) => {
                 setSelectedOption(value?.label || 'Low')
                 try {
                   const currentTask: Task = { ...task, importance: +(value?.value ?? 0) };
+                  setCredentials({ ...credentials, ['importance']: +(value?.value ?? 0) })
                   let response = await taskDataSource.updateTask({ task: currentTask })
+                  console.log(response)
                   response = await taskDataSource.getUserTasks({})
                   dispatch(setTasks(response))
                 } catch (error: any) {

@@ -22,6 +22,6 @@ const useLogic = (task: Task) => {
     } catch (error: any) {
     }
   }
-  return { credentials, changeHandler, updateTask, dispatch, setTasks }
+  return { credentials, changeHandler, updateTask, dispatch, setTasks, setCredentials }
 }
 export default useLogic 
