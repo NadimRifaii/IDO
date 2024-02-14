@@ -56,7 +56,11 @@ const useLogic = () => {
     let year = date.getUTCFullYear();
     let month = String(date.getUTCMonth() + 1).padStart(2, '0');
     let day = String(date.getUTCDate()).padStart(2, '0');
-    let formattedDate = `${year}-${month}-${day}T`;
+    let hours = String(date.getUTCHours()).padStart(2, '0');
+    let minutes = String(date.getUTCMinutes()).padStart(2, '0');
+    let seconds = String(date.getUTCSeconds()).padStart(2, '0');
+    let milliseconds = String(date.getUTCMilliseconds()).padStart(3, '0');
+    let formattedDate = `${year}-${month}-${day}T${hours}:${minutes}:${seconds}.${milliseconds}Z`;
     return formattedDate;
   }
 

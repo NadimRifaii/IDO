@@ -1,11 +1,14 @@
-import { useSelector } from "react-redux"
-import { extractUserSlice } from "../../core/dataSource/localDataSource/userSlice/userSlice"
+import { useDispatch, useSelector } from "react-redux"
+import { extractUserSlice, removeUser } from "../../core/dataSource/localDataSource/userSlice/userSlice"
 import { useNavigate } from "react-router-dom"
 import LogoutIcon from "../../assets/logout-icon.component"
+import { removeTasks } from "../../core/dataSource/localDataSource/tasksSlice/tasksSlice"
+import { User } from "../../core/types/user"
 
 const Logout = () => {
   const navigate = useNavigate()
   const user = useSelector(extractUserSlice)
+  const dispatch = useDispatch()
   return (
     <div className="logout">
       <div className="avatar">
@@ -17,6 +20,8 @@ const Logout = () => {
           <p>Log Out</p>
           <div onClick={() => {
             localStorage.setItem("user", "sdf")
+            dispatch(removeUser({} as User))
+            dispatch(removeTasks({ tasks: [], todoTasks: [], doingTasks: [], doneTasks: [] }))
             navigate('/')
           }} className="icon logout-icon">
             <LogoutIcon />

@@ -29,6 +29,8 @@
 
 .header .nav {
   position: relative;
+  flex: 1;
+  justify-content: flex-end;
 }
 
 .header .nav .logout {
@@ -43,6 +45,23 @@
   color: white;
   padding: 15px;
   z-index: 20;
+}
+
+.tool-tip {
+  position: absolute;
+  z-index: 20;
+  top: 38px;
+  color: white;
+  padding: 3px;
+  background-color: #5B5E60;
+  right: 85px;
+  font-size: 14px;
+  opacity: 0;
+  transition: .3s;
+}
+
+.header .nav .add-icon:hover+.tool-tip {
+  opacity: 1;
 }
 
 .header .nav .logout .logout-right {

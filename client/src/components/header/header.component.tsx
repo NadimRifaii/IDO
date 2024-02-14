@@ -14,6 +14,7 @@ const Header = ({ createTask, searchTasks }: HeaderProps) => {
       <div className="logo">
         <img src="./Logo.png" alt="" />
       </div>
+
       <div className="nav">
         <div className="search">
           <img src='./Search.svg' />
@@ -22,6 +23,9 @@ const Header = ({ createTask, searchTasks }: HeaderProps) => {
         <div className="add-icon" onClick={createTask}>
           <img src='./Circle.svg' />
           <img src="./Add.svg" alt="" />
+        </div>
+        <div className="tool-tip">
+          Add Item
         </div>
         <div className="avatar">
           <img onClick={() => setActiveLogout(!activeLogout)} src="./Bitmap.png" alt="" />
