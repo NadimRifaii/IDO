@@ -1,7 +1,6 @@
 import { setTasks, extractTasksSlice } from "../../core/dataSource/localDataSource/tasksSlice/tasksSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { Task } from "../../core/types/task";
-import { useEffect } from "react";
 import { taskDataSource } from "../../core/dataSource/remoteDataSource/taskDataSource";
 
 const useLogic = (status: "todoTasks" | 'doingTasks' | 'doneTasks') => {
@@ -14,7 +13,7 @@ const useLogic = (status: "todoTasks" | 'doingTasks' | 'doneTasks') => {
     const newTasksForOldSection = tasksSlice[taskSection]?.filter(task => task.taskId !== id) || [];
     const task = { ...currentTask, status: findStatusNumber(status) };
     updateTask(task)
-    const allTasks = tasksSlice.tasks.map((task, index) => {
+    const allTasks = tasksSlice.tasks.map((task) => {
       if (task.taskId == currentTask.taskId) {
         return { ...task, status: findStatusNumber(status) }
       }

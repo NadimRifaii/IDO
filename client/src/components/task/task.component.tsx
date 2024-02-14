@@ -4,12 +4,18 @@ import Select from "react-select"
 import { useState } from "react"
 import { taskDataSource } from "../../core/dataSource/remoteDataSource/taskDataSource"
 
+
+//css files
+import './task.styles.css'
+import Input from "../common/input/input.component"
+import useLogic from "./logic.hook"
 type TaskProps = {
   task: Task,
   isDragging?: boolean,
   drag?: ConnectDragSource
 }
 const TaskComponent = ({ task }: TaskProps) => {
+  const { credentials, changeHandler, updateTask, dispatch, setTasks } = useLogic(task)
   const [{ isDragging }, drag] = useDrag(() => ({
     type: 'task',
     item: { taskId: task.taskId },
@@ -22,12 +28,12 @@ const TaskComponent = ({ task }: TaskProps) => {
   return (
     <div ref={drag} className={`task ${isDragging ? 'dragging' : ''}`}>
       <div className="title">
-        {task.title}
+        <Input inputProps={{ type: 'text', onChange: changeHandler, onBlur: updateTask, value: credentials.title, name: 'title' }} />
       </div>
       <div className="category row">
         <div className="key">Category</div>
         <div className="value">
-          {task.category}
+          <Input inputProps={{ type: 'text', onChange: changeHandler, onBlur: updateTask, value: credentials.category, name: 'category' }} />
         </div>
       </div>
       <div className="due-date row">
@@ -35,7 +41,7 @@ const TaskComponent = ({ task }: TaskProps) => {
           Due Date
         </div>
         <div className="value">
-          {task.dueDate.split("T")[0]}
+          <Input inputProps={{ type: 'date', onChange: changeHandler, onBlur: updateTask, value: credentials.dueDate.split("T")[0], name: 'dueDate' }} />
         </div>
       </div>
       <div className="estimate row">
@@ -43,7 +49,7 @@ const TaskComponent = ({ task }: TaskProps) => {
           Estimate
         </div>
         <div className="value">
-          {task.estimate}
+          <Input inputProps={{ type: 'text', onChange: changeHandler, onBlur: updateTask, value: credentials.estimate, name: 'estimate' }} />
         </div>
       </div>
       <div className="importance row">
@@ -57,7 +63,9 @@ const TaskComponent = ({ task }: TaskProps) => {
                 setSelectedOption(value?.label || 'Low')
                 try {
                   const currentTask: Task = { ...task, importance: +(value?.value ?? 0) };
-                  const response = await taskDataSource.updateTask({ task: currentTask })
+                  let response = await taskDataSource.updateTask({ task: currentTask })
+                  response = await taskDataSource.getUserTasks({})
+                  dispatch(setTasks(response))
                 } catch (error: any) {
                 }
               }}

@@ -50,6 +50,11 @@
   width: 75px;
 }
 
-.tasks-container .task .row .value {
+.tasks-container .task .row:not(:last-child) .value {
   font-size: 14px;
+  flex: 1;
+}
+
+.tasks-container .task .row:last-child .value {
+  width: 125px;
 }

@@ -16,10 +16,10 @@ const useLogic = () => {
   const navigate = useNavigate()
   const dispatch = useDispatch()
   const login = async () => {
-    const loadingToastId = toast.loading('Signing up...');
+    const loadingToastId = toast.loading('Loging in...');
     try {
-      const response=await authDataSource.login({ credentials })
-      toast.success('Signup successful!', { id: loadingToastId });
+      const response = await authDataSource.login({ credentials })
+      toast.success('Login successful!', { id: loadingToastId });
       setCredentials({ ...defaultCredentials })
       dispatch(setUser(response))
       navigate('/home')

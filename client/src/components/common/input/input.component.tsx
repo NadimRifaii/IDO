@@ -7,7 +7,8 @@ type InputProps = {
     required?: boolean,
     name: string,
     placeholder?: string,
-    onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void
+    onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void,
+    onBlur?: (e: React.ChangeEvent<HTMLInputElement>) => void
   }
   label?: string,
 }
