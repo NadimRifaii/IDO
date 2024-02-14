@@ -1,7 +1,7 @@
-import { Task } from "./task"
+import { taskSlice } from "../dataSource/localDataSource/tasksSlice/tasksSlice"
 import { User } from "./user"
 
 export type RootState = {
   user: User,
-  tasks: Task[]
+  tasks: taskSlice
 }

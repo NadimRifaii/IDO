@@ -3,9 +3,13 @@ import useLogic from "./logic.hook"
 
 //css files
 import './home.styles.css'
-import { useState } from "react"
+import { useEffect, useState } from "react"
 const HomePage = () => {
+  const { todoTasks } = useLogic()
   const [activeQuote, setActiveQuote] = useState(true)
+  useEffect(() => {
+    console.log(todoTasks)
+  }, [todoTasks])
   return (
     <div className="home-page">
       <Header />
@@ -17,6 +21,15 @@ const HomePage = () => {
           </div>
           : <img className="show-quote" onClick={() => setActiveQuote(true)} src="./ShowQuote.png" />
       }
+      <div className="tasks-container">
+        <div className="todo">
+          {
+            todoTasks?.map((task, index) => {
+              return <h1 key={task.taskId} >{task.title}</h1>
+            })
+          }
+        </div>
+      </div>
     </div>
   )
 }
