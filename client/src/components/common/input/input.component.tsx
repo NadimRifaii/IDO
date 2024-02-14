@@ -6,9 +6,10 @@ type InputProps = {
     value?: string,
     required?: boolean,
     name: string,
+    placeholder?: string,
     onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void
   }
-  label: string,
+  label?: string,
 }
 const Input = ({ inputProps, label }: InputProps) => {
   return (
