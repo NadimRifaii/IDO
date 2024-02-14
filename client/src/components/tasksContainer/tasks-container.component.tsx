@@ -7,7 +7,7 @@ import './tasks-container.styles.css'
 import useLogic from "./logic.hook"
 
 type TasksContainerProps = {
-  status: string,
+  status: "todoTasks" | 'doingTasks' | 'doneTasks',
   tasks: Task[],
   Icon: () => JSX.Element
 }
@@ -27,7 +27,7 @@ const TasksContainer = ({ status, tasks, Icon }: TasksContainerProps) => {
         <div className="icon">
           <Icon />
         </div>
-        <span>{status}</span>
+        <span>{status == 'todoTasks' ? 'To Do' : 'doingTasks' ? 'Doing' : 'Done'}</span>
       </div>
       {
         tasks.map(task => {

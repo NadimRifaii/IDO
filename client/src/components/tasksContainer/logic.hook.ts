@@ -2,19 +2,18 @@ import { setTasks, extractTasksSlice } from "../../core/dataSource/localDataSour
 import { useDispatch, useSelector } from "react-redux";
 import { Task } from "../../core/types/task";
 import { useEffect } from "react";
+import { taskDataSource } from "../../core/dataSource/remoteDataSource/taskDataSource";
 
-const useLogic = (status: string) => {
+const useLogic = (status: "todoTasks" | 'doingTasks' | 'doneTasks') => {
   const dispatch = useDispatch();
   const tasksSlice = useSelector(extractTasksSlice);
-
   const addItemToSection = (id: number) => {
     const { currentTask, taskSection } = findCurrentTask(id);
-
-    const droppedAtSection: "todoTasks" | 'doingTasks' | 'doneTasks' = status === 'To Do' ? 'todoTasks' : status === 'Doing' ? 'doingTasks' : 'doneTasks';
-
+    const droppedAtSection: "todoTasks" | 'doingTasks' | 'doneTasks' = status
+    if (taskSection === droppedAtSection) return;
     const newTasksForOldSection = tasksSlice[taskSection]?.filter(task => task.taskId !== id) || [];
-
     const task = { ...currentTask, status: findStatusNumber(status) };
+    updateTask(task)
     const allTasks = tasksSlice.tasks.map((task, index) => {
       if (task.taskId == currentTask.taskId) {
         return { ...task, status: findStatusNumber(status) }
@@ -22,7 +21,6 @@ const useLogic = (status: string) => {
       return task
     })
     const newTasksForNewSection = [...(tasksSlice[droppedAtSection] || []), task];
-
     dispatch(setTasks({ ...tasksSlice, ['tasks']: allTasks, [droppedAtSection]: newTasksForNewSection, [taskSection]: newTasksForOldSection }));
   };
   const findCurrentTask = (id: number): { currentTask: Task, taskSection: "todoTasks" | 'doingTasks' | 'doneTasks' } => {
@@ -43,17 +41,24 @@ const useLogic = (status: string) => {
 
   const findStatusNumber = (status: string) => {
     switch (status) {
-      case 'To Do':
+      case 'todoTasks':
         return 0;
-      case 'Doing':
+      case 'doingTasks':
         return 1;
-      case 'Done':
+      case 'doneTasks':
         return 2;
       default:
         return 0;
     }
   };
+  const updateTask = async (task: Task) => {
+    try {
+      const response = await taskDataSource.updateTask({ task })
+      console.log(response)
+    } catch (error: any) {
 
+    }
+  }
   return { addItemToSection };
 };
 

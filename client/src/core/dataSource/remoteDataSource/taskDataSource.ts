@@ -43,5 +43,17 @@ export const taskDataSource = {
     } catch (error: any) {
       throw new Error(error)
     }
+  },
+  updateTask: async (data: { task: Task }) => {
+    try {
+      const response = await sendRequest({
+        route: "Task/updateTask",
+        method: "PUT",
+        data: data.task
+      })
+      return response
+    } catch (error: any) {
+      throw new Error(error)
+    }
   }
 }

@@ -24,9 +24,9 @@ const HomePage = () => {
           : <img className="show-quote" onClick={() => setActiveQuote(true)} src="./ShowQuote.png" />
       }
       <div className="container">
-        <TasksContainer Icon={ToDOIcon} status="To Do" tasks={todoTasks || []} />
-        <TasksContainer Icon={DoingIcon} status="Doing" tasks={doingTasks || []} />
-        <TasksContainer Icon={DoneIcon} status="Done" tasks={doneTasks || []} />
+        <TasksContainer Icon={ToDOIcon} status="todoTasks" tasks={todoTasks || []} />
+        <TasksContainer Icon={DoingIcon} status="doingTasks" tasks={doingTasks || []} />
+        <TasksContainer Icon={DoneIcon} status="doneTasks" tasks={doneTasks || []} />
       </div>
     </div>
   )

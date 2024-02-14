@@ -30,7 +30,7 @@ const TaskComponent = ({ task }: TaskProps) => {
           Due Date
         </div>
         <div className="value">
-          {task.dueDate}
+          {task.dueDate.split("T")[0]}
         </div>
       </div>
       <div className="estimate row">
