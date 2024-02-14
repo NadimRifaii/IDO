@@ -7,7 +7,7 @@ import toast from "react-hot-toast"
 const useLogic = () => {
   const dispatch = useDispatch()
   const user = useSelector(extractUserSlice)
-  const { tasks, todoTasks } = useSelector(extractTasksSlice)
+  const { tasks, todoTasks, doingTasks, doneTasks } = useSelector(extractTasksSlice)
 
   useEffect(() => {
     if (localStorage.getItem("user")) {
@@ -26,6 +26,6 @@ const useLogic = () => {
       toast.error(`Something went wrong`, { id: loadingToastId });
     }
   }
-  return { user, tasks, todoTasks }
+  return { user, tasks, todoTasks, doneTasks, doingTasks }
 }
 export default useLogic 

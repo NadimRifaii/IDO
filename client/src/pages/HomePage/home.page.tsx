@@ -4,8 +4,12 @@ import useLogic from "./logic.hook"
 //css files
 import './home.styles.css'
 import { useEffect, useState } from "react"
+import TasksContainer from "../../components/tasksContainer/tasks-container.component"
+import ToDOIcon from "../../assets/todo-icon.component"
+import DoingIcon from "../../assets/doing-icon.component"
+import DoneIcon from "../../assets/done-icon.component"
 const HomePage = () => {
-  const { todoTasks } = useLogic()
+  const { todoTasks, doingTasks, doneTasks } = useLogic()
   const [activeQuote, setActiveQuote] = useState(true)
   useEffect(() => {
     console.log(todoTasks)
@@ -21,14 +25,10 @@ const HomePage = () => {
           </div>
           : <img className="show-quote" onClick={() => setActiveQuote(true)} src="./ShowQuote.png" />
       }
-      <div className="tasks-container">
-        <div className="todo">
-          {
-            todoTasks?.map((task, index) => {
-              return <h1 key={task.taskId} >{task.title}</h1>
-            })
-          }
-        </div>
+      <div className="container">
+        <TasksContainer Icon={ToDOIcon} status="To Do" tasks={todoTasks || []} />
+        <TasksContainer Icon={DoingIcon} status="Doing" tasks={doingTasks || []} />
+        <TasksContainer Icon={DoneIcon} status="Done" tasks={doneTasks || []} />
       </div>
     </div>
   )

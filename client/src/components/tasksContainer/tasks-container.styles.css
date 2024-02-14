@@ -1,0 +1,12 @@
+.tasks-container {}
+
+.tasks-container .status {
+  background-color: #212529;
+  padding: 10px;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: white;
+  font-size: 18px;
+}

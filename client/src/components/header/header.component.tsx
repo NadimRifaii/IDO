@@ -16,7 +16,10 @@ const Header = () => {
           <img src='./Search.svg' />
           <Input inputProps={{ type: 'text', name: 'search', placeholder: "What are you looking for?" }} />
         </div>
-        <div className="buttons"></div>
+        <div className="add-icon">
+          <img src='./Circle.svg' />
+          <img src="./Add.svg" alt="" />
+        </div>
         <div className="avatar">
           <img onClick={() => setActiveLogout(!activeLogout)} src="./Bitmap.png" alt="" />
         </div>
