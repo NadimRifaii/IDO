@@ -15,13 +15,16 @@
   width: 50px;
   height: 50px;
   display: grid;
-  place-items: center;
+  overflow: hidden;
+  border-radius: 50%;
   cursor: pointer;
   margin-left: 10px;
+  place-items: center;
 }
 
 .header .avatar img {
   border-radius: 50%;
+  transform: scale(1.2);
 }
 
 .header .nav {
@@ -54,7 +57,7 @@
   justify-content: center;
 }
 
-.header .nav .logout .logout-right .logout-icon {
+.logout .logout-right .logout-icon {
   cursor: pointer;
 }
 

@@ -1,6 +1,7 @@
 import { useSelector } from "react-redux"
 import { extractUserSlice } from "../../core/dataSource/localDataSource/userSlice/userSlice"
 import { useNavigate } from "react-router-dom"
+import LogoutIcon from "../../assets/logout-icon.component"
 
 const Logout = () => {
   const navigate = useNavigate()
@@ -13,10 +14,13 @@ const Logout = () => {
       <div className="logout-right">
         <div className="email">{user.email || 'nadim@gmail.com'}</div>
         <div className="holder">
-          <p>Log Out</p>  <img onClick={() => {
+          <p>Log Out</p>
+          <div onClick={() => {
             localStorage.setItem("user", "sdf")
             navigate('/')
-          }} className="logout-icon" src="./Icon ionic-ios-log-out.svg" alt="" />
+          }} className="icon logout-icon">
+            <LogoutIcon />
+          </div>
         </div>
       </div>
     </div>

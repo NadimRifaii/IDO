@@ -17,10 +17,10 @@ export const taskDataSource = {
             todoTasks.push(task)
             break
           case 1:
-            doingTasks.push(task)
+            doingTasks.unshift(task)
             break
           case 2:
-            doneTasks.push(task)
+            doneTasks.unshift(task)
             break
           default:
             break

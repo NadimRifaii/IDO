@@ -37,6 +37,20 @@
   display: flex;
   gap: 15px;
   padding-left: 15px;
+  height: 550px;
+  overflow: auto;
+}
+
+.home-page .container::-webkit-scrollbar {
+  width: 0px;
+}
+
+.home-page .container::-webkit-scrollbar-thumb {
+  background-color: var(--blue-color);
+}
+
+.home-page .container::-webkit-scrollbar-track {
+  background-color: transparent;
 }
 
 .home-page .container .tasks-container {

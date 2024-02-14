@@ -4,11 +4,14 @@ import { extractTasksSlice, setTasks } from "../../core/dataSource/localDataSour
 import { useDispatch, useSelector } from "react-redux"
 import { taskDataSource } from "../../core/dataSource/remoteDataSource/taskDataSource"
 import toast from "react-hot-toast"
+import { Task } from "../../core/types/task"
 const useLogic = () => {
   const dispatch = useDispatch()
   const user = useSelector(extractUserSlice)
   const { tasks, todoTasks, doingTasks, doneTasks } = useSelector(extractTasksSlice)
-
+  const [filteredTodoTasks, setFilteredToDoTasks] = useState<Task[]>(todoTasks || [])
+  const [filteredDoingTasks, setFilteredDoingTasks] = useState<Task[]>(doingTasks || [])
+  const [filteredDoneTasks, setFilteredDoneTasks] = useState<Task[]>(doneTasks || [])
   useEffect(() => {
     if (localStorage.getItem("user")) {
       const user = JSON.parse(localStorage.getItem("user") || '')
@@ -27,24 +30,21 @@ const useLogic = () => {
     }
   }
   const createTask = async () => {
-    const loadingToastId = toast.loading('Creating task...');
     const defaultTaskObject = {
       "taskId": 0,
       "title": "Default title",
       "category": "Default category",
       "dueDate": formatDateString(new Date()),
-      "estimate": "Default estimate",
+      "estimate": "Default",
       "importance": 0,
       "status": 0,
       "userId": "string"
     }
     try {
-      const response = await taskDataSource.createTask({ defaultTaskObject })
-      dispatch(setTasks(response))
-      toast.success('Task created!', { id: loadingToastId });
+      const response: { tasks: Task[] } = await taskDataSource.createTask({ defaultTaskObject })
+      dispatch(setTasks({ tasks: [...response.tasks], todoTasks: [response.tasks[0], ...todoTasks || []] }))
       getUserTasks()
     } catch (error: any) {
-      toast.error(`Something went wrong`, { id: loadingToastId });
     }
   }
   const formatDateString = (date: Date) => {

@@ -1,5 +1,8 @@
 import { ConnectDragSource, useDrag } from "react-dnd"
 import { Task } from "../../core/types/task"
+import Select from "react-select"
+import { useState } from "react"
+import { taskDataSource } from "../../core/dataSource/remoteDataSource/taskDataSource"
 
 type TaskProps = {
   task: Task,
@@ -14,6 +17,8 @@ const TaskComponent = ({ task }: TaskProps) => {
       isDragging: !!monitor.isDragging()
     })
   }))
+  const [options, setOptions] = useState<string[]>(['Low', 'Medium', 'High'])
+  const [selectedOption, setSelectedOption] = useState<string>(options[task.importance])
   return (
     <div ref={drag} className={`task ${isDragging ? 'dragging' : ''}`}>
       <div className="title">
@@ -46,7 +51,45 @@ const TaskComponent = ({ task }: TaskProps) => {
           Importance
         </div>
         <div className="value">
-          {task.importance}
+          <div className="select-box">
+            <Select
+              onChange={async (value) => {
+                setSelectedOption(value?.label || 'Low')
+                try {
+                  const currentTask: Task = { ...task, importance: +(value?.value ?? 0) };
+                  const response = await taskDataSource.updateTask({ task: currentTask })
+                } catch (error: any) {
+                }
+              }}
+              defaultValue={{
+                value: `${task.importance}`,
+                label: `${options[task.importance]}`,
+              }}
+              styles={{
+                control: (provided) => ({
+                  ...provided,
+                  backgroundColor: `${selectedOption === 'Low' ? '#39AC95' : selectedOption == 'Medium' ? '#FE913E' : '#DC3545'}`,
+                  border: 'none',
+                  color: 'white'
+                }),
+                menu: (provided) => ({
+                  ...provided,
+                  backgroundColor: '#f0f0f0',
+                  color: 'black'
+                }),
+                singleValue: (provided) => ({
+                  ...provided,
+                  color: 'white'
+                })
+              }}
+              options={options.map((option, index) => {
+                return {
+                  value: index.toString(),
+                  label: option
+                }
+              })}
+            />
+          </div>
         </div>
       </div>
     </div>
