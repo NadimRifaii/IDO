@@ -1,5 +1,6 @@
 .home-page {
   position: relative;
+
 }
 
 .home-page .quote {
@@ -35,6 +36,7 @@
   margin-top: 15px;
   display: flex;
   gap: 15px;
+  padding-left: 15px;
 }
 
 .home-page .container .tasks-container {

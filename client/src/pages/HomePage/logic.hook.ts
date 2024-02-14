@@ -30,10 +30,10 @@ const useLogic = () => {
     const loadingToastId = toast.loading('Creating task...');
     const defaultTaskObject = {
       "taskId": 0,
-      "title": "string",
-      "category": "string",
-      "dueDate": "2024-02-13T14:30:25.372Z",
-      "estimate": "string",
+      "title": "Default title",
+      "category": "Default category",
+      "dueDate": formatDateString(new Date()),
+      "estimate": "Default estimate",
       "importance": 0,
       "status": 0,
       "userId": "string"
