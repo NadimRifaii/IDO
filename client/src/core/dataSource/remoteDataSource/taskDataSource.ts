@@ -31,5 +31,17 @@ export const taskDataSource = {
       console.log(error)
       throw new Error(error)
     }
+  },
+  createTask: async (data: { defaultTaskObject: Task }) => {
+    try {
+      const response = await sendRequest({
+        route: "Task/createTask",
+        method: "POST",
+        data: data.defaultTaskObject
+      })
+      return response
+    } catch (error: any) {
+      throw new Error(error)
+    }
   }
 }

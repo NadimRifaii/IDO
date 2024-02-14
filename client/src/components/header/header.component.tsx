@@ -1,10 +1,12 @@
-
+type HeaderProps = {
+  createTask: () => void
+}
 //css files 
 import { useState } from 'react'
 import './header.styles.css'
 import Logout from '../logout/logout.component'
 import Input from '../common/input/input.component'
-const Header = () => {
+const Header = ({ createTask }: HeaderProps) => {
   const [activeLogout, setActiveLogout] = useState(false)
   return (
     <div className="header">
@@ -16,7 +18,7 @@ const Header = () => {
           <img src='./Search.svg' />
           <Input inputProps={{ type: 'text', name: 'search', placeholder: "What are you looking for?" }} />
         </div>
-        <div className="add-icon">
+        <div className="add-icon" onClick={createTask}>
           <img src='./Circle.svg' />
           <img src="./Add.svg" alt="" />
         </div>
