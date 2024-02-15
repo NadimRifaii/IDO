@@ -4,7 +4,6 @@ using Microsoft.EntityFrameworkCore;
 using server_ido.Models;
 using System;
 using System.Threading.Tasks;
-using Task = System.Threading.Tasks.Task;
 
 namespace server_ido.Contextes
 {

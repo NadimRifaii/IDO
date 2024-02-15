@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("server-ido")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+dcc79025d070ad875e779d63a118bd00e6658df5")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+6bfc10fe58a01bdd13e0d0a67b0c776f9cb14e60")]
 [assembly: System.Reflection.AssemblyProductAttribute("server-ido")]
 [assembly: System.Reflection.AssemblyTitleAttribute("server-ido")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using server_ido.Contextes;
+using server_ido.Models;
 using server_ido.Services;
 using System.Text;
 
@@ -13,6 +14,8 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddDbContext<AuthContext>(options =>
 options.UseSqlServer(builder.Configuration.GetConnectionString("IDO"))
 );
+
+
 
 builder.Services.AddDbContext<TaskContext>(options =>
 options.UseSqlServer(builder.Configuration.GetConnectionString("IDO"))
@@ -52,7 +55,6 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
-
 
 
 // Configure the HTTP request pipeline.
