@@ -1,5 +1,9 @@
 ### Implementation - Quick Walk through
 
+
+https://github.com/NadimRifaii/IDO/assets/149371719/dca0556e-c818-4c37-b7e7-cd82f2d868e3
+
+
 ###  IDO is built using the following technologies:
 
 - This project uses the [React Library](https://react.dev/). React is a JavaScript library for building user interfaces. It makes it easy to create reusable components and manage complex UIs, and [TypeScript](https://www.typescriptlang.org/), a superset of JavaScript that adds static typing to the language.
