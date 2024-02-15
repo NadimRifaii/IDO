@@ -8,7 +8,6 @@ import './App.css'
 import HomePage from "./pages/HomePage/home.page"
 import AuthComponent from "./components/authComponent/auth.component"
 function App() {
-
   return (
     <DndProvider backend={HTML5Backend}>
       <Toaster />

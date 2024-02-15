@@ -28,12 +28,12 @@ export const tasksSlice = createSlice({
         ...payload
       }
     },
-    removeTasks(prevState, { type, payload }: { type: string, payload: taskSlice }) {
+    removeTasks(prevState, { type, payload }: { type: string, payload: any }) {
       if (type && prevState && payload) {
 
       }
       return {
-        ...payload
+        ...initialState
       }
     }
   }

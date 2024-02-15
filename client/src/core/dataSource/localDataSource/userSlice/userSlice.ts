@@ -18,7 +18,7 @@ export const userSlice = createSlice({
         ...payload
       }
     },
-    removeUser(prevState, { type, payload }: { type: string, payload: User }) {
+    removeUser(prevState, { type, payload }: { type: string, payload: any }) {
       if (type && prevState && payload) {
 
       }

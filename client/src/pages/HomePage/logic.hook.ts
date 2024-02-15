@@ -14,8 +14,6 @@ const useLogic = () => {
   const [filteredDoneTasks, setFilteredDoneTasks] = useState<Task[]>(doneTasks || [])
   useEffect(() => {
     if (localStorage.getItem("user")) {
-      const user = JSON.parse(localStorage.getItem("user") || '')
-      dispatch(setUser(user))
       getUserTasks()
     }
   }, [])

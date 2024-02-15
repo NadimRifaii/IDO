@@ -19,10 +19,11 @@ const Logout = () => {
         <div className="holder">
           <p>Log Out</p>
           <div onClick={() => {
-            localStorage.setItem("user", "sdf")
-            dispatch(removeUser({} as User))
-            dispatch(removeTasks({ tasks: [], todoTasks: [], doingTasks: [], doneTasks: [] }))
+            localStorage.clear()
+            dispatch(removeUser({}))
+            dispatch(removeTasks({}))
             navigate('/')
+
           }} className="icon logout-icon">
             <LogoutIcon />
           </div>
