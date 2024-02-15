@@ -18,7 +18,7 @@ https://github.com/NadimRifaii/IDO/assets/149371719/5937d56b-18d3-4a09-9354-4f63
 ### Installation
 
 1. Clone the repo
-   git clone [github](https://github.com/NadimRifaii/CampVerse.git)
+   git clone [github](https://github.com/NadimRifaii/IDO.git)
    <br>
 2. Setup the frontend
    ```sh
