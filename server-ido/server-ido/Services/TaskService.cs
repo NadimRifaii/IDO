@@ -1,9 +1,7 @@
-﻿using IDO.Contextes;
-using IDO.Models;
-using Microsoft.AspNetCore.Identity;
+﻿using server_ido.Contextes;
+using server_ido.Models;
 using Microsoft.EntityFrameworkCore;
-
-namespace IDO.Services
+namespace server_ido.Services
 {
     public class TaskService : ITaskService
     {
@@ -46,11 +44,11 @@ namespace IDO.Services
 
                 await _context.SaveChangesAsync();
 
-                return "True"; 
+                return "True";
             }
             catch (Exception ex)
             {
-                return ex.Message; // Return error message if an exception occurs
+                return ex.Message;
             }
         }
         public async Task<IEnumerable<Models.Task>> GetUserTasks(User user)
@@ -62,11 +60,12 @@ namespace IDO.Services
                     .OrderByDescending(task => task.TaskId)
                     .ToListAsync();
                 return tasks;
-            }catch(Exception ex)
+            }
+            catch (Exception ex)
             {
                 return null;
             }
         }
-        
+
     }
 }

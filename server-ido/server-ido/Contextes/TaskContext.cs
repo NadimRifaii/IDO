@@ -1,12 +1,12 @@
 ﻿using Microsoft.EntityFrameworkCore;
 
-namespace IDO.Contextes
+namespace server_ido.Contextes
 {
     public class TaskContext : DbContext
     {
         public TaskContext(DbContextOptions<TaskContext> options) : base(options) { }
 
-        public DbSet<Models.Task> Tasks { get; set;}
+        public DbSet<Models.Task> Tasks { get; set; }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
@@ -14,6 +14,5 @@ namespace IDO.Contextes
             // Ignore the Task entity
             modelBuilder.Ignore<Models.User>();
         }
-
     }
 }

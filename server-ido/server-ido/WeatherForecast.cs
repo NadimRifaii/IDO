@@ -1,4 +1,4 @@
-namespace IDO
+namespace server_ido
 {
     public class WeatherForecast
     {

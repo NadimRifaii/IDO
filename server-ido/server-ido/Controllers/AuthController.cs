@@ -1,9 +1,8 @@
-﻿using IDO.Models;
-using IDO.Services;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
+using server_ido.Models;
+using server_ido.Services;
 
-namespace IDO.Controllers
+namespace server_ido.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
@@ -17,12 +16,12 @@ namespace IDO.Controllers
         [HttpPost("signup")]
         public async Task<IActionResult> SignUp(User user)
         {
-            var result=await _authService.Signup(user);
+            var result = await _authService.Signup(user);
             if (result == true)
             {
                 var tokenString = _authService.GenerateTokenString(user);
                 var returnedUser = new { email = user.Email, userName = user.UserName };
-                var response = new { token = tokenString,currentUser=returnedUser }; 
+                var response = new { token = tokenString, currentUser = returnedUser };
                 return Ok(response);
             }
             return BadRequest();
@@ -31,15 +30,14 @@ namespace IDO.Controllers
         public async Task<IActionResult> Login(User user)
         {
             var currentUser = await _authService.Login(user);
-            if (currentUser!=null)
+            if (currentUser != null)
             {
                 var tokenString = _authService.GenerateTokenString(user);
                 var returnedUser = new { email = currentUser.Email, userName = currentUser.UserName };
-                var response = new { token = tokenString,currentUser=returnedUser };
+                var response = new { token = tokenString, currentUser = returnedUser };
                 return Ok(response);
             }
             return BadRequest();
         }
-
     }
 }

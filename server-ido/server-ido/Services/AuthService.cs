@@ -1,14 +1,14 @@
-﻿using IDO.Models;
-using Microsoft.AspNetCore.Identity;
+﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.IdentityModel.Tokens;
+using server_ido.Models;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
-using System.Text;
 using System.Text.RegularExpressions;
+using System.Text;
 
-namespace IDO.Services
+namespace server_ido.Services
 {
-    public class AuthService :IAuthService
+    public class AuthService : IAuthService
     {
         private readonly UserManager<IdentityUser> _userManager;
         private readonly IConfiguration _config;
@@ -76,16 +76,16 @@ namespace IDO.Services
                 };
                 return user;
             }
-            return null; 
+            return null;
         }
         public async Task<User> Login(Models.User user)
         {
-            var identityUser=await _userManager.FindByEmailAsync(user.Email);
+            var identityUser = await _userManager.FindByEmailAsync(user.Email);
             if (identityUser == null)
             {
                 return null;
             }
-            if(await _userManager.CheckPasswordAsync(identityUser, user.Password))
+            if (await _userManager.CheckPasswordAsync(identityUser, user.Password))
             {
                 var currentUser = new User
                 {

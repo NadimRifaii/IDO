@@ -1,7 +1,6 @@
-﻿using IDO.Models;
-using Microsoft.AspNetCore.Identity;
+﻿using server_ido.Models;
 
-namespace IDO.Services
+namespace server_ido.Services
 {
     public interface ITaskService
     {

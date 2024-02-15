@@ -1,12 +1,9 @@
-﻿using IDO.Services;
-using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Identity;
-using System.Threading.Tasks;
-using IDO.Models;
+using server_ido.Models;
+using server_ido.Services;
 
-namespace IDO.Controllers
+namespace server_ido.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
@@ -17,7 +14,7 @@ namespace IDO.Controllers
         private readonly IHttpContextAccessor _httpContextAccessor;
         private readonly ITaskService _taskService;
 
-        public TaskController(IAuthService authService,ITaskService taskService, IHttpContextAccessor httpContextAccessor)
+        public TaskController(IAuthService authService, ITaskService taskService, IHttpContextAccessor httpContextAccessor)
         {
             _authService = authService;
             _taskService = taskService;
@@ -49,7 +46,7 @@ namespace IDO.Controllers
                 return Unauthorized();
             }
             var userTasks = await _taskService.GetUserTasks(currentUser);
-            var response = new { tasks=userTasks, user = currentUser };
+            var response = new { tasks = userTasks, user = currentUser };
             return Ok(response);
         }
         [HttpPost("createTask")]
@@ -62,16 +59,16 @@ namespace IDO.Controllers
             }
             task.UserId = currentUser.UserId;
             var result = await _taskService.CreateTask(task);
-            var userTasks=await _taskService.GetUserTasks(currentUser);
+            var userTasks = await _taskService.GetUserTasks(currentUser);
             var response = new { tasks = userTasks, user = currentUser };
-            if (result!="True")
+            if (result != "True")
             {
                 return BadRequest(result);
             }
             return Ok(response);
         }
 
-        [HttpPut("updateTask")] 
+        [HttpPut("updateTask")]
         public async Task<IActionResult> UpdateTask(Models.Task task)
         {
             var currentUser = await GetCurrentUserAsync();

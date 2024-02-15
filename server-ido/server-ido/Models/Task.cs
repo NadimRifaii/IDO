@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace IDO.Models
+namespace server_ido.Models
 {
     public class Task
     {

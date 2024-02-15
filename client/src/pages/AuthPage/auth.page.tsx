@@ -4,7 +4,7 @@ import SignUp from "../../components/signup/signup.component"
 //css files 
 import './auth.styles.css'
 const AuthPage = () => {
-  const [activeForm, setActiveForm] = useState("login")
+  const [activeForm, setActiveForm] = useState("signup")
   return (
     <div className="auth">
       <div className="welcome">

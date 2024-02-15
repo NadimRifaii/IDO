@@ -1,9 +1,9 @@
-using IDO.Contextes;
-using IDO.Services;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
+using server_ido.Contextes;
+using server_ido.Services;
 using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -53,13 +53,14 @@ builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
 
+
+
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
     app.UseSwaggerUI();
 }
-
 app.UseCors(builder =>
 {
     builder.

@@ -1,6 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 
-namespace IDO.Controllers
+namespace server_ido.Controllers
 {
     [ApiController]
     [Route("[controller]")]
