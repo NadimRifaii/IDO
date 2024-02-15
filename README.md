@@ -1,7 +1,11 @@
 ### Implementation - Quick Walk through
 
 
-https://github.com/NadimRifaii/IDO/assets/149371719/dca0556e-c818-4c37-b7e7-cd82f2d868e3
+
+https://github.com/NadimRifaii/IDO/assets/149371719/5937d56b-18d3-4a09-9354-4f638245259d
+
+
+
 
 
 ###  IDO is built using the following technologies:
