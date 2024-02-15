@@ -28,7 +28,7 @@
 
    Update-Database -Context TaskContext
    ```
-   Then go to appsettings.json file and put the corresponding server name in the IDO connection string , it's gonna be something like DESKTOP-LVDV1FL\SQLEXPRESS
+   Then go to appsettings.json file and put the corresponding server name in the IDO connection string , it's gonna be something like `DESKTOP-LVDV1FL\SQLEXPRESS`
    ```sh
    "IDO": "server=; database=idoDB;Integrated Security=True;MultipleActiveResultSets=True;TrustServerCertificate=True"
    ```
