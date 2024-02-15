@@ -1,6 +1,5 @@
 .home-page {
   position: relative;
-
 }
 
 .home-page .quote {
@@ -32,17 +31,21 @@
   opacity: 1;
 }
 
+.home-page .scroll-container {
+  overflow-x: auto;
+}
+
 .home-page .container {
   margin-top: 15px;
   display: flex;
   gap: 15px;
   padding-left: 15px;
-  height: 550px;
   overflow: auto;
+  min-width: 1100px;
 }
 
 .home-page .container::-webkit-scrollbar {
-  width: 0px;
+  width: 2px;
 }
 
 .home-page .container::-webkit-scrollbar-thumb {
