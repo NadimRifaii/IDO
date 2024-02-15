@@ -16,7 +16,7 @@ const Input = ({ inputProps, label }: InputProps) => {
   return (
     <div className="input-container">
       <input {...inputProps} />
-      <label htmlFor="">{label}</label>
+      <label >{label}</label>
     </div>
   )
 }
