@@ -2,7 +2,8 @@
 
 - This project uses the [React Library](https://react.dev/). React is a JavaScript library for building user interfaces. It makes it easy to create reusable components and manage complex UIs, and [TypeScript](https://www.typescriptlang.org/), a superset of JavaScript that adds static typing to the language.
 
-- This project uses [ASP.NET](https://dotnet.microsoft.com/en-us/apps/aspnet) For the backend side of the application .
+- This project uses [ASP.NET](https://dotnet.microsoft.com/en-us/apps/aspnet) For the backend side of the application along side with [Microsoft SQL Server Management Studio](https://learn.microsoft.com/en-us/sql/ssms/download-sql-server-management-studio-ssms?view=sql-server-ver16)
+
 
 ### Installation
 
