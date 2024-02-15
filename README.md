@@ -4,8 +4,6 @@
 
 - This project uses [ASP.NET](https://dotnet.microsoft.com/en-us/apps/aspnet) For the backend side of the application .
 
-<br><br>
-
 ### Installation
 
 1. Clone the repo
