@@ -51,7 +51,7 @@ const useLogic = (status: "todoTasks" | 'doingTasks' | 'doneTasks') => {
   };
   const updateTask = async (task: Task) => {
     try {
-      const response = await taskDataSource.updateTask({ task })
+      await taskDataSource.updateTask({ task })
     } catch (error: any) {
     }
   }

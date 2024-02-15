@@ -1,9 +1,8 @@
-import { useEffect, useState } from "react"
+import { useState } from "react"
 import { Task } from "../../core/types/task"
 import { taskDataSource } from "../../core/dataSource/remoteDataSource/taskDataSource"
 import { setTasks } from "../../core/dataSource/localDataSource/tasksSlice/tasksSlice"
-import { useDispatch, useSelector } from "react-redux"
-import { extractQuerySlice } from "../../core/dataSource/localDataSource/currentQuery/querySlice"
+import { useDispatch } from "react-redux"
 
 
 const useLogic = (task: Task) => {
@@ -11,9 +10,6 @@ const useLogic = (task: Task) => {
   const dispatch = useDispatch()
   const changeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
     setCredentials({ ...credentials, [e.target.name]: e.target.value })
-  }
-  const onBlur = () => {
-    updateTask()
   }
   const updateTask = async () => {
     try {

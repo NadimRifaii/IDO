@@ -5,7 +5,6 @@ import TaskComponent from "../task/task.component"
 //css files
 import './tasks-container.styles.css'
 import useLogic from "./logic.hook"
-import { useEffect } from "react"
 
 type TasksContainerProps = {
   status: "todoTasks" | 'doingTasks' | 'doneTasks',

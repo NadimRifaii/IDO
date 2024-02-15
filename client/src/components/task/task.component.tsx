@@ -1,7 +1,7 @@
 import { ConnectDragSource, useDrag } from "react-dnd"
 import { Task } from "../../core/types/task"
 import Select from "react-select"
-import { useEffect, useState } from "react"
+import { useState } from "react"
 import { taskDataSource } from "../../core/dataSource/remoteDataSource/taskDataSource"
 
 import Input from "../common/input/input.component"
@@ -31,7 +31,7 @@ const TaskComponent = ({ task, highlightTitle }: TaskProps) => {
     <div ref={drag} className={`task ${isDragging ? 'dragging' : ''}`}>
       <div className="title" style={{
         color: `${highlightTitle ? 'black' : 'white'}`,
-        backgroundColor: `${highlightTitle ? 'blue' : ''}`,
+        backgroundColor: `${highlightTitle ? '#03a9f4a8' : ''}`,
       }} >
         <Input inputProps={{ type: 'text', onChange: changeHandler, onBlur: updateTask, value: credentials.title, name: 'title' }} />
       </div>
