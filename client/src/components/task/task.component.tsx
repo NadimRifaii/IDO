@@ -1,7 +1,7 @@
 import { ConnectDragSource, useDrag } from "react-dnd"
 import { Task } from "../../core/types/task"
 import Select from "react-select"
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { taskDataSource } from "../../core/dataSource/remoteDataSource/taskDataSource"
 
 import Input from "../common/input/input.component"
@@ -9,12 +9,14 @@ import useLogic from "./logic.hook"
 
 //css files
 import './task.styles.css'
+
 type TaskProps = {
   task: Task,
   isDragging?: boolean,
-  drag?: ConnectDragSource
+  drag?: ConnectDragSource,
+  highlightTitle: boolean
 }
-const TaskComponent = ({ task }: TaskProps) => {
+const TaskComponent = ({ task, highlightTitle }: TaskProps) => {
   const { credentials, changeHandler, updateTask, dispatch, setTasks, setCredentials } = useLogic(task)
   const [{ isDragging }, drag] = useDrag(() => ({
     type: 'task',
@@ -27,7 +29,10 @@ const TaskComponent = ({ task }: TaskProps) => {
   const [selectedOption, setSelectedOption] = useState<string>(options[task.importance])
   return (
     <div ref={drag} className={`task ${isDragging ? 'dragging' : ''}`}>
-      <div className="title">
+      <div className="title" style={{
+        color: `${highlightTitle ? 'black' : 'white'}`,
+        backgroundColor: `${highlightTitle ? 'blue' : ''}`,
+      }} >
         <Input inputProps={{ type: 'text', onChange: changeHandler, onBlur: updateTask, value: credentials.title, name: 'title' }} />
       </div>
       <div className="category row">

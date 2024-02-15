@@ -5,10 +5,12 @@ import { useDispatch, useSelector } from "react-redux"
 import { taskDataSource } from "../../core/dataSource/remoteDataSource/taskDataSource"
 import toast from "react-hot-toast"
 import { Task } from "../../core/types/task"
+import { extractQuerySlice, setQuery } from "../../core/dataSource/localDataSource/currentQuery/querySlice"
 const useLogic = () => {
   const dispatch = useDispatch()
   const user = useSelector(extractUserSlice)
   const { tasks, todoTasks, doingTasks, doneTasks } = useSelector(extractTasksSlice)
+  const { query } = useSelector(extractQuerySlice)
   const [filteredTodoTasks, setFilteredToDoTasks] = useState<Task[]>(todoTasks || [])
   const [filteredDoingTasks, setFilteredDoingTasks] = useState<Task[]>(doingTasks || [])
   const [filteredDoneTasks, setFilteredDoneTasks] = useState<Task[]>(doneTasks || [])
@@ -17,7 +19,6 @@ const useLogic = () => {
       getUserTasks()
     }
   }, [])
-
   const getUserTasks = async () => {
     const loadingToastId = toast.loading('Fetching user tasks...');
     try {
@@ -76,8 +77,8 @@ const useLogic = () => {
     setFilteredToDoTasks(todo);
     setFilteredDoingTasks(doing);
     setFilteredDoneTasks(done);
+    dispatch(setQuery(query))
   }
-
-  return { user, tasks, filteredTodoTasks, filteredDoingTasks, filteredDoneTasks, createTask, searchTasks }
+  return { user, tasks, filteredTodoTasks, filteredDoingTasks, filteredDoneTasks, query, createTask, searchTasks }
 }
 export default useLogic 

@@ -3,5 +3,6 @@ import { User } from "./user"
 
 export type RootState = {
   user: User,
-  tasks: taskSlice
+  tasks: taskSlice,
+  query: { query: string }
 }

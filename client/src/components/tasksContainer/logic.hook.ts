@@ -37,7 +37,6 @@ const useLogic = (status: "todoTasks" | 'doingTasks' | 'doneTasks') => {
       taskSection: 'todoTasks'
     };
   };
-
   const findStatusNumber = (status: string) => {
     switch (status) {
       case 'todoTasks':
@@ -54,7 +53,6 @@ const useLogic = (status: "todoTasks" | 'doingTasks' | 'doneTasks') => {
     try {
       const response = await taskDataSource.updateTask({ task })
     } catch (error: any) {
-
     }
   }
   return { addItemToSection };

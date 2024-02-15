@@ -5,13 +5,15 @@ import TaskComponent from "../task/task.component"
 //css files
 import './tasks-container.styles.css'
 import useLogic from "./logic.hook"
+import { useEffect } from "react"
 
 type TasksContainerProps = {
   status: "todoTasks" | 'doingTasks' | 'doneTasks',
   tasks: Task[],
-  Icon: () => JSX.Element
+  Icon: () => JSX.Element,
+  query: string
 }
-const TasksContainer = ({ status, tasks, Icon }: TasksContainerProps) => {
+const TasksContainer = ({ status, tasks, query, Icon }: TasksContainerProps) => {
   const { addItemToSection } = useLogic(status)
   const [{ isOver }, drop] = useDrop({
     accept: 'task',
@@ -31,7 +33,7 @@ const TasksContainer = ({ status, tasks, Icon }: TasksContainerProps) => {
       </div>
       {
         tasks.map(task => {
-          return <TaskComponent task={task} key={task.taskId} />
+          return <TaskComponent highlightTitle={task.title.toLowerCase().includes(query.toLowerCase()) && query.length > 0} task={task} key={task.taskId} />
         })
       }
     </div>

@@ -2,7 +2,8 @@ import { useEffect, useState } from "react"
 import { Task } from "../../core/types/task"
 import { taskDataSource } from "../../core/dataSource/remoteDataSource/taskDataSource"
 import { setTasks } from "../../core/dataSource/localDataSource/tasksSlice/tasksSlice"
-import { useDispatch } from "react-redux"
+import { useDispatch, useSelector } from "react-redux"
+import { extractQuerySlice } from "../../core/dataSource/localDataSource/currentQuery/querySlice"
 
 
 const useLogic = (task: Task) => {
