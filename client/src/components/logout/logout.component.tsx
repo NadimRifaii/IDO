@@ -3,7 +3,6 @@ import { extractUserSlice, removeUser } from "../../core/dataSource/localDataSou
 import { useNavigate } from "react-router-dom"
 import LogoutIcon from "../../assets/logout-icon.component"
 import { removeTasks } from "../../core/dataSource/localDataSource/tasksSlice/tasksSlice"
-import { User } from "../../core/types/user"
 
 const Logout = () => {
   const navigate = useNavigate()

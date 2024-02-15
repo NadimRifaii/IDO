@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react"
-import { extractUserSlice, setUser } from "../../core/dataSource/localDataSource/userSlice/userSlice"
+import { extractUserSlice } from "../../core/dataSource/localDataSource/userSlice/userSlice"
 import { extractTasksSlice, setTasks } from "../../core/dataSource/localDataSource/tasksSlice/tasksSlice"
 import { useDispatch, useSelector } from "react-redux"
 import { taskDataSource } from "../../core/dataSource/remoteDataSource/taskDataSource"
