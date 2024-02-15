@@ -4,11 +4,11 @@ import Select from "react-select"
 import { useState } from "react"
 import { taskDataSource } from "../../core/dataSource/remoteDataSource/taskDataSource"
 
+import Input from "../common/input/input.component"
+import useLogic from "./logic.hook"
 
 //css files
 import './task.styles.css'
-import Input from "../common/input/input.component"
-import useLogic from "./logic.hook"
 type TaskProps = {
   task: Task,
   isDragging?: boolean,
