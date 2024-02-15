@@ -18,7 +18,7 @@
    npm install
    ```
 3. Setup the  backend <br>
-   Open the `server-ido.sln` file using microsoft visual studio , then using the package manager console run the following commands
+   Open the `server-ido.sln` file using microsoft visual studio , then using the `package manager console` run the following commands
    ```sh
    Add-Migration auth -c AuthContext
 
