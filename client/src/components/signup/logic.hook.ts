@@ -17,24 +17,34 @@ const defaultCredentials: {
 }
 const useLogic = () => {
   const [credentials, setCredentials] = useState(defaultCredentials)
+  const [validEmail, setValidEmail] = useState<boolean | null>(null)
+  const [validPassword, setValidPassword] = useState<boolean | null>(null)
   const navigate = useNavigate()
   const dispatch = useDispatch()
   const signup = async () => {
     const loadingToastId = toast.loading('Signing up...');
-    console.log("Clicked")
     try {
+      if (!validEmail || !validPassword)
+        throw new Error("Invalid credentials")
       const response = await authDataSource.signup({ credentials })
       setCredentials({ ...defaultCredentials })
       toast.success('Signup successful!', { id: loadingToastId });
       dispatch(setUser(response))
       navigate('/home')
     } catch (error: any) {
-      toast.error(`Something went wrong`, { id: loadingToastId });
+      toast.error(`${error}`, { id: loadingToastId });
     }
   }
   const changeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
     setCredentials({ ...credentials, [e.target.name]: e.target.value })
   }
-  return { credentials, setCredentials, signup, changeHandler }
+  function isValidEmail(email: string) {
+    var pattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+    setValidEmail(pattern.test(email));
+  }
+  function isValidPassword(password: string) {
+    setValidPassword(password.length > 5)
+  }
+  return { credentials, validEmail, validPassword, setCredentials, signup, changeHandler, isValidEmail, isValidPassword }
 }
 export default useLogic 

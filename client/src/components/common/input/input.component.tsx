@@ -1,4 +1,5 @@
 //css files 
+import { useEffect, useState } from 'react'
 import './input.styles.css'
 type InputProps = {
   inputProps: {
@@ -11,12 +12,21 @@ type InputProps = {
     onBlur?: (e: React.ChangeEvent<HTMLInputElement>) => void
   }
   label?: string,
+  validEmail?: boolean | null,
+  validPassword?: boolean | null
 }
-const Input = ({ inputProps, label }: InputProps) => {
+const Input = ({ inputProps, label, validEmail, validPassword }: InputProps) => {
+  const { type } = inputProps
+  const [errorText, setErrorText] = useState<string>(`${type == 'email' ? 'Invalid email!' : 'Invalid password!'}`)
   return (
     <div className="input-container">
       <input {...inputProps} />
-      <label >{label}</label>
+      <label>{label}</label>
+      {
+        (typeof validEmail == 'boolean' && !validEmail) || ((typeof validPassword == 'boolean' && !validPassword)) ?
+          <div className='error-state' >{errorText}</div>
+          : ''
+      }
     </div>
   )
 }

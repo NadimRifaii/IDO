@@ -7,7 +7,7 @@ type SignupProps = {
 }
 
 const SignUp = ({ formToggler }: SignupProps) => {
-  const { credentials, signup, changeHandler } = useLogic()
+  const { credentials, validEmail, validPassword, isValidEmail, isValidPassword, signup, changeHandler } = useLogic()
   return (
     <div className="signup">
       <form action="" onSubmit={(e) => {
@@ -15,8 +15,8 @@ const SignUp = ({ formToggler }: SignupProps) => {
         signup()
       }}>
         <Input label="Username" inputProps={{ type: "text", value: credentials.userName, onChange: changeHandler, name: 'userName', required: true, placeholder: 'Gold' }} />
-        <Input label="Email" inputProps={{ type: "email", value: credentials.email, onChange: changeHandler, name: 'email', required: true, placeholder: 'user@example.com' }} />
-        <Input label="Password" inputProps={{ type: "password", value: credentials.password, onChange: changeHandler, name: 'password', required: true, placeholder: 'password1234' }} />
+        <Input label="Email" validEmail={validEmail} inputProps={{ type: "email", value: credentials.email, onChange: changeHandler, onBlur: (e) => isValidEmail(e.target.value), name: 'email', required: true, placeholder: 'user@example.com' }} />
+        <Input label="Password" validPassword={validPassword} inputProps={{ type: "password", value: credentials.password, onChange: changeHandler, onBlur: (e) => isValidPassword(e.target.value), name: 'password', required: true, placeholder: 'password1234' }} />
         <Button value="Signup" handleClick={() => { }} />
       </form>
       <div className="switch-form">
