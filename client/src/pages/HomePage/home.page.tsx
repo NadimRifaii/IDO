@@ -23,7 +23,9 @@ const HomePage = () => {
           </div>
           : <img className="show-quote" onClick={() => setActiveQuote(true)} src="./ShowQuote.png" />
       }
-      <div className="container">
+      <div className="container" style={{
+        height: `${activeQuote ? 'calc(100vh - 160px)' : 'calc(100vh - 95px)'}`
+      }} >
         <TasksContainer Icon={ToDOIcon} status="todoTasks" tasks={todoTasks || []} />
         <TasksContainer Icon={DoingIcon} status="doingTasks" tasks={doingTasks || []} />
         <TasksContainer Icon={DoneIcon} status="doneTasks" tasks={doneTasks || []} />

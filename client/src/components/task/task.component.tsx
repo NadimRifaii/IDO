@@ -1,7 +1,7 @@
 import { ConnectDragSource, useDrag } from "react-dnd"
 import { Task } from "../../core/types/task"
 import Select from "react-select"
-import { useEffect, useState } from "react"
+import { useState } from "react"
 import { taskDataSource } from "../../core/dataSource/remoteDataSource/taskDataSource"
 
 
@@ -23,7 +23,7 @@ const TaskComponent = ({ task }: TaskProps) => {
       isDragging: !!monitor.isDragging()
     })
   }))
-  const [options, setOptions] = useState<string[]>(['Low', 'Medium', 'High'])
+  const options: string[] = ['Low', 'Medium', 'High']
   const [selectedOption, setSelectedOption] = useState<string>(options[task.importance])
   return (
     <div ref={drag} className={`task ${isDragging ? 'dragging' : ''}`}>
