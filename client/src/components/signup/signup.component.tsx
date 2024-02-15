@@ -14,9 +14,9 @@ const SignUp = ({ formToggler }: SignupProps) => {
         e.preventDefault()
         signup()
       }}>
-        <Input label="Username" inputProps={{ type: "text", value: credentials.userName, onChange: changeHandler, name: 'userName', required: true }} />
-        <Input label="Email" inputProps={{ type: "email", value: credentials.email, onChange: changeHandler, name: 'email', required: true }} />
-        <Input label="Password" inputProps={{ type: "password", value: credentials.password, onChange: changeHandler, name: 'password', required: true }} />
+        <Input label="Username" inputProps={{ type: "text", value: credentials.userName, onChange: changeHandler, name: 'userName', required: true, placeholder: 'Gold' }} />
+        <Input label="Email" inputProps={{ type: "email", value: credentials.email, onChange: changeHandler, name: 'email', required: true, placeholder: 'user@example.com' }} />
+        <Input label="Password" inputProps={{ type: "password", value: credentials.password, onChange: changeHandler, name: 'password', required: true, placeholder: 'password1234' }} />
         <Button value="Signup" handleClick={() => { }} />
       </form>
       <div className="switch-form">

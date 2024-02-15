@@ -45,7 +45,14 @@
   text-decoration: underline;
 }
 
+.auth input::placeholder {
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
 
+.auth input:focus::placeholder {
+  opacity: 1;
+}
 
 @media (max-width:992px) {
   .auth .welcome p {
