@@ -78,7 +78,7 @@ namespace server_ido.Services
             }
             return null;
         }
-        public async Task<User> Login(Models.User user)
+        public async Task<User> Login(User user)
         {
             var identityUser = await _userManager.FindByEmailAsync(user.Email);
             if (identityUser == null)
@@ -96,7 +96,7 @@ namespace server_ido.Services
             }
             return null;
         }
-        public async Task<bool> Signup(Models.User user)
+        public async Task<bool> Signup(User user)
         {
             if (user.UserName == "" || !IsValidEmail(user.Email))
                 return false;
