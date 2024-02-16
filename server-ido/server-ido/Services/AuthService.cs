@@ -100,13 +100,18 @@ namespace server_ido.Services
         {
             if (user.UserName == "" || !IsValidEmail(user.Email))
                 return false;
-            var identityUser = new IdentityUser
+            var identityUser = await _userManager.FindByEmailAsync(user.Email);
+            if(identityUser == null)
             {
-                UserName = user.UserName,
-                Email = user.Email,
-            };
-            var result = await _userManager.CreateAsync(identityUser, user.Password);
-            return result.Succeeded;
+                identityUser = new IdentityUser
+                {
+                    UserName = user.UserName,
+                    Email = user.Email,
+                };
+                var result = await _userManager.CreateAsync(identityUser, user.Password);
+                return result.Succeeded;
+            }
+            return false;
         }
         private bool IsValidEmail(string email)
         {
