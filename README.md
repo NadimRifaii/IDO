@@ -19,7 +19,6 @@ https://github.com/NadimRifaii/IDO/assets/149371719/1399690e-4a19-40cb-aa69-a6fd
 ### Installation
 
 1. Clone the repo
-   git clone [github](https://github.com/NadimRifaii/IDO.git)
    <br>
 2. Setup the frontend
    ```sh
